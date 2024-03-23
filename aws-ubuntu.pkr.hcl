@@ -1,8 +1,8 @@
 packer {
     required_pugins {
         amazon = {
-            version = '>= 1.2.1'
-            source  = 'github.com/hashicorp/amazon'
+            source  = "github.com/hashicorp/amazon"
+            version = "~> 1"
         }
 
     }
