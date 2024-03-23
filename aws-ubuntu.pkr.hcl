@@ -10,7 +10,7 @@ packer {
 
 source "amazon-ebs" "builder_name" {
     ami_name            =   "My_First_Packer_Image"
-    insatnce_type       =   "t2.micro"
+    instance_type       =   "t2.micro"
     region              =   "us-east-1"
 
     source_ami          =   "ami-055744c75048d8296"
