@@ -13,7 +13,8 @@ source "amazon-ebs" "builder_name" {
     instance_type       =   "t2.micro"
     region              =   "us-east-1"
 
-    source_ami          =   "ami-055744c75048d8296"
+    source_ami          =   "ami-080e1f13689e07408"
+    // source_ami          =   "ami-055744c75048d8296"
 
     ssh_username        =   "ubuntu"
 
