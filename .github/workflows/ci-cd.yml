@@ -4,7 +4,7 @@ on:
     workflow_dispatch: 
 
 jobs:
-    packer_image_deployment:
+    build:
         runs-on: ubuntu-latest
         environment: development
 
@@ -51,4 +51,4 @@ jobs:
 
             - name: Build Packer Image
               run: |
-                packer build aws-ubuntu.pkr.hcl
+                packer build aws-docker.pkr.hcl
