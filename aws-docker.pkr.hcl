@@ -1,4 +1,4 @@
-source "amazon-ebs" "builder_name" {
+source "amazon-ebs" "aws_docker" {
     ami_name            =   "AWS-Docker-Image"
     instance_type       =   "t2.micro"
     region              =   "us-east-1"
@@ -15,7 +15,7 @@ source "amazon-ebs" "builder_name" {
 
 build {
     name        =   "aws-docker"
-    sources     =   ["source.amazon-ebs.builder_name"] 
+    sources     =   ["source.amazon-ebs.aws_docker"] 
 
     provisioner "shell" {
         inline  =   [
