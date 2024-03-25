@@ -1,13 +1,3 @@
-packer {
-    required_plugins {
-        amazon = {
-            source  = "github.com/hashicorp/amazon"
-            version = "~> 1"
-        }
-
-    }
-}
-
 source "amazon-ebs" "builder_name" {
     ami_name            =   "My_First_Packer_Image"
     instance_type       =   "t2.micro"
@@ -29,7 +19,6 @@ build {
 
     provisioner "shell" {
         inline  =   [
-            "sudo apt update",
             "sudo apt install nginx -y",
             "sudo systemctl enable nginx",
             "sudo systemctl start nginx",
@@ -38,7 +27,5 @@ build {
         ]
     }
 
-    // post-processor "vagrant" {}
-    // post-processor "compress" {}
 }
 

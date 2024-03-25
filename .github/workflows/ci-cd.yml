@@ -39,16 +39,16 @@ jobs:
                 
             - name: Initialise Packer Plugins
               run: |
-                packer init aws-docker.pkr.hcl
+                packer init .
             
             - name: Format Packer File
               run: |
-                packer fmt aws-docker.pkr.hcl
+                packer fmt .
 
             - name: Validate Packer File
               run: |
-                packer validate aws-docker.pkr.hcl
+                packer validate .
 
             - name: Build Packer Image
               run: |
-                packer build aws-docker.pkr.hcl
+                packer build .

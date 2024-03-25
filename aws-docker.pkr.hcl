@@ -1,13 +1,3 @@
-packer {
-    required_plugins {
-        amazon = {
-            source  = "github.com/hashicorp/amazon"
-            version = "~> 1"
-        }
-
-    }
-}
-
 source "amazon-ebs" "builder_name" {
     ami_name            =   "AWS-Docker-Image"
     instance_type       =   "t2.micro"
@@ -29,17 +19,18 @@ build {
 
     provisioner "shell" {
         inline  =   [
-            "sudo apt update",
-            "sudo apt-get update",
-            "sudo apt-get install ca-certificates curl",
+            "sudo apt-get -y update",
+            "sudo apt-get -y install ca-certificates curl",
             "sudo install -m 0755 -d /etc/apt/keyrings",
             "sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc",
             "sudo chmod a+r /etc/apt/keyrings/docker.asc",
             "echo 'deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \\",
             "$( . /etc/os-release && echo \"$VERSION_CODENAME\") stable' | \\",
             "sudo tee /etc/apt/sources.list.d/docker.list > /dev/null",
-            "sudo apt-get update",
-            "sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin",
+            "sudo apt-get -y update",
+            "sudo apt -y install snapd",
+            "sudo snap -y install docker"
+            "sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin",
             "sudo docker --version",
             "sudo groupadd docker",
             "sudo usermod -aG docker ubuntu",
@@ -55,7 +46,5 @@ build {
         ]
     }
 
-    // post-processor "vagrant" {}
-    // post-processor "compress" {}
 }
 
